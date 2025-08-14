@@ -1,7 +1,6 @@
 import React from "react";
-import ChildComponents from "./ChildComponents";
 
-class MyComponents extends React.Component {
+class ChildComponents  extends React.Component {
 
     /*
         JSX return code block
@@ -15,12 +14,7 @@ class MyComponents extends React.Component {
 
     state = {
         firstName: '',
-        lastName: '',
-        arrJobs: [
-            { id: 'job1', title: 'Developer', salary: '500$' },
-            { id: 'job2', title: 'Tester', salary: '400$' },
-            { id: 'job3', title: 'Project Manager', salary: '1000$' }
-        ]
+        lastName: ''
     }
 
     handleChangeFirstName = (e) => {
@@ -42,22 +36,26 @@ class MyComponents extends React.Component {
     render() {
 
         // let name = "Soupsix";
-        console.log(">>> call render: ", this.state);
+        console.log(">>> call render: ", this.props);
+        // let name = this.props.name;
+        // let age = this.props.age;
+        
+        //Object destructuring
+        let { name, age, address, arrJobs } = this.props; // Destructuring props
+
         return (
             <>
-                <h1>My Components</h1>
-                <form>
-                    <label htmlFor="fname">First name:</label><br />
-                    <input type="text" id="fname" value={this.state.firstName} onChange={(e) => this.handleChangeFirstName(e)} /><br />
-                    <label htmlFor="lname">Last name:</label><br />
-                    <input type="text" id="lname" value={this.state.lastName} onChange={(e) => this.handleChangeLastName(e)} /><br />
-                    <input type="button" value="Submit" onClick={(e) => this.handleOnClickSubmit(e)} />
-                </form>
-
-                <ChildComponents name={this.state.firstName} age={this.state.lastName} address={'hanoi'} arrJobs={this.state.arrJobs}  />
+                <div>This is child: {name} - Age: {age} - Address: {address}</div>
+                <div className="job-list">
+                    {arrJobs.map((item, index) => (
+                        <li key={item.id}>
+                            <span>{item.id} - {item.title} - {item.salary}</span>
+                        </li>
+                    )) }
+                </div>
             </>
         );
     }
 }
 
-export default MyComponents;
+export default ChildComponents;
