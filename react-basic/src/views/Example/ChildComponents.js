@@ -122,7 +122,7 @@ const ChildComponents = (props) => {
                             ))}
                         </div>
                         <div>
-                            <button onClick={handleShowHide}>Hide</button>
+                            <button onClick={() => {handleShowHide}}>Hide</button>
                         </div>
                     </>
             }
