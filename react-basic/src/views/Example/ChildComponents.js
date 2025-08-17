@@ -1,4 +1,6 @@
 import React, { useState } from "react"; 
+import './Demo.css'
+
 
 // class ChildComponents extends React.Component {
 
@@ -105,7 +107,7 @@ const ChildComponents = (props) => {
             {
                 showJobs === false ?
                     <div>
-                        <button onClick={handleShowHide}>Show</button>
+                        <button className="btn-show" onClick={handleShowHide}>Show</button>
                     </div>
                     :
                     <>
@@ -122,7 +124,7 @@ const ChildComponents = (props) => {
                             ))}
                         </div>
                         <div>
-                            <button onClick={() => {handleShowHide}}>Hide</button>
+                            <button onClick={handleShowHide}>Hide</button>
                         </div>
                     </>
             }

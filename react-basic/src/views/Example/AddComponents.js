@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './Demo.css'
 
 const AddComponents = (props) => {  // Đổi thành arrow function
     const [title, setTitle] = useState('');
