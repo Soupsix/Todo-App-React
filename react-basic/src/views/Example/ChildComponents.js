@@ -1,5 +1,5 @@
 import React, { useState } from "react"; 
-import './Demo.css'
+import './Demo.scss'
 
 
 // class ChildComponents extends React.Component {

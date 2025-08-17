@@ -37,6 +37,17 @@ class MyComponents extends React.Component {
         })
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        console.log(">>> call componentDidUpdate: ",'PrevProps: ', prevProps, 'PrevState: ',prevState);
+        // This method is called after the component updates
+        // You can perform any side effects or data fetching here based on the updated state or props
+    }
+    componentDidMount(){
+        console.log(">>> call componentDidMount: ");
+        // This method is called after the component is mounted
+        // You can perform any initial data fetching or setup here
+    }
+
     render() {
 
         // let name = "Soupsix";
