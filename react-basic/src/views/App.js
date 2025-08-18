@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.scss';
 import MyComponents from './Example/MyComponents';
+import ListTodo from './Todos/ListTodo';
 
 
 /**
@@ -21,7 +22,8 @@ function App() {
           Hello World with Soupsix!
         </p>
         
-        <MyComponents />
+        {/* <MyComponents /> */}
+        <ListTodo />
       </header>
     </div>
   );
