@@ -4,6 +4,10 @@ import MyComponents from './Example/MyComponents';
 import ListTodo from './Todos/ListTodo';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Navigation from './Nav/Navigation';
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import Home from './Home/home';
+
 /**
  * 2 loại component trong React:
  * 1. Class component: sử dụng class để định nghĩa, có thể sử dụng state
@@ -17,15 +21,45 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
           Hello World with Soupsix!
-        </p>
+        </p> */}
 
         {/* <MyComponents /> */}
-        <ListTodo />
-        {/* Thêm ToastContainer vào cuối App component */}
-        <ToastContainer />
+        <Router>
+          <Routes>
+            <Route path="/" exact element={<Navigate to="/home" replace />} />
+
+            <Route path='home' element={
+              <>
+
+                <Navigation />
+                <Home />
+
+              </>} />
+            
+            <Route path='add' element={<>
+                <Navigation />
+                <MyComponents />
+              </>} />
+
+
+            {/* Đây là route "/todos" chứa nhiều component */}
+            <Route
+              path="/todos"
+              element={
+                <>
+                  {/* <MyComponents /> */}
+                  <Navigation />
+                  <ListTodo />
+                  <ToastContainer />
+                </>
+              } />
+
+
+          </Routes>
+        </Router>
       </header>
     </div>
   );

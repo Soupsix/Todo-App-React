@@ -32,8 +32,12 @@ const ListTodo = () => {
     }
 
     return (
-        <div className="list-todo-container">
-            <h2 className="todo-title">Simple Todo List</h2>
+        <>
+        <div>
+            <h1 className="title">Welcome to the Todo App</h1>
+        </div>
+         <div className="list-todo-container">
+            <h2 className="todo-title">Simple Todo List By Soupsix</h2>
             
             
             <AddTodo addNewTodo={addNewTodo} />
@@ -66,6 +70,8 @@ const ListTodo = () => {
                 )}
             </div>
         </div>
+        </>
+       
     );
 };
 
