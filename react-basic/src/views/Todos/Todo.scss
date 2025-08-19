@@ -1,0 +1,179 @@
+// Variables
+$primary-color: #333;
+$secondary-color: #666;
+$light-color: #888;
+$border-color: #ddd;
+$light-border: #eee;
+$background-color: #f9f9f9;
+$white: white;
+$border-radius: 4px;
+$box-shadow-light: 0 1px 2px rgba(0,0,0,0.05);
+$box-shadow-medium: 0 2px 4px rgba(0,0,0,0.1);
+
+// Mixins
+@mixin button-base {
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 6px 12px;
+  color: $white;
+}
+
+.list-todo-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: $background-color;
+  border-radius: 8px;
+  box-shadow: $box-shadow-medium;
+
+  .todo-title {
+    text-align: center;
+    color: $primary-color;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+
+  .add-todos {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    .todo-input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid $border-color;
+      border-radius: $border-radius;
+      font-size: 16px;
+      outline: none;
+
+      &:focus {
+        border-color: $primary-color;
+      }
+
+      &::placeholder {
+        color: $light-color;
+      }
+    }
+
+    .btn-add {
+      padding: 10px 20px;
+      background-color: $primary-color;
+      color: $white;
+      border: none;
+      border-radius: $border-radius;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+
+      &:active {
+        background-color: darken($primary-color, 20%);
+      }
+    }
+  }
+
+  .list-todos-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .todo-child {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      background-color: $white;
+      border: 1px solid $light-border;
+      border-radius: $border-radius;
+      box-shadow: $box-shadow-light;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+
+      .todo-text {
+        flex: 1;
+        font-size: 16px;
+        color: $primary-color;
+        margin-right: 15px;
+      }
+
+      .button-group {
+        display: flex;
+        gap: 8px;
+
+        .btn-edit {
+          @include button-base;
+          background-color: $secondary-color;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: darken($secondary-color, 10%);
+          }
+        }
+
+        .btn-delete {
+          @include button-base;
+          background-color: $light-color;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: darken($light-color, 10%);
+          }
+        }
+      }
+    }
+
+    .empty-message {
+      text-align: center;
+      color: $light-color;
+      font-style: italic;
+      padding: 20px;
+      background-color: $white;
+      border-radius: $border-radius;
+      border: 1px solid $light-border;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .list-todo-container {
+    margin: 10px;
+    padding: 15px;
+
+    .add-todos {
+      flex-direction: column;
+      
+      .btn-add {
+        align-self: stretch;
+      }
+    }
+
+    .list-todos-content {
+      .todo-child {
+        padding: 12px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+
+        .todo-text {
+          margin-right: 0;
+          margin-bottom: 5px;
+        }
+
+        .button-group {
+          justify-content: center;
+        }
+      }
+    }
+  }
+}

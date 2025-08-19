@@ -2,8 +2,8 @@ import logo from './logo.svg';
 import './App.scss';
 import MyComponents from './Example/MyComponents';
 import ListTodo from './Todos/ListTodo';
-
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 /**
  * 2 loại component trong React:
  * 1. Class component: sử dụng class để định nghĩa, có thể sử dụng state
@@ -21,9 +21,11 @@ function App() {
         <p>
           Hello World with Soupsix!
         </p>
-        
+
         {/* <MyComponents /> */}
         <ListTodo />
+        {/* Thêm ToastContainer vào cuối App component */}
+        <ToastContainer />
       </header>
     </div>
   );
