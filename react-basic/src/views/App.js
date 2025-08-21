@@ -7,7 +7,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import Navigation from './Nav/Navigation';
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Home from './Home/home';
+import About from './Home/About';
+import ListUsers from './Users/ListUsers';
+import DetailUsers from './Users/DetailUser';
+import Layout from './Layout';
 
+import React from 'react';
+import { Provider } from 'react-redux';
+import todoReducer from '../redux/reducers';
 /**
  * 2 loại component trong React:
  * 1. Class component: sử dụng class để định nghĩa, có thể sử dụng state
@@ -29,34 +36,28 @@ function App() {
         {/* <MyComponents /> */}
         <Router>
           <Routes>
+
+            {/* Redirect từ / sang /home */}
             <Route path="/" exact element={<Navigate to="/home" replace />} />
 
-            <Route path='home' element={
-              <>
+          {/* Layout chứa Navigation + Outlet */}
 
-                <Navigation />
-                <Home />
-
-              </>} />
-            
-            <Route path='add' element={<>
-                <Navigation />
-                <MyComponents />
-              </>} />
-
-
+          <Route path='/' element={<Layout />}>
+            <Route path="home" element={<Home />} />
+            <Route path="add" element={<MyComponents />} />
+            <Route path="users" element={<ListUsers />} />
+            <Route path="users/:id" element={<DetailUsers />} />
             {/* Đây là route "/todos" chứa nhiều component */}
             <Route
               path="/todos"
               element={
                 <>
                   {/* <MyComponents /> */}
-                  <Navigation />
                   <ListTodo />
                   <ToastContainer />
                 </>
               } />
-
+          </Route>
 
           </Routes>
         </Router>

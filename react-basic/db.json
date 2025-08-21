@@ -1,0 +1,51 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Nguyễn Văn A",
+      "email": "nguyenvana@example.com",
+      "createdAt": "2025-08-20T07:00:00Z"
+    },
+    {
+      "id": 2,
+      "name": "Trần Thị B",
+      "email": "tranthib@example.com",
+      "createdAt": "2025-08-21T09:00:00Z"
+    }
+  ],
+  "todos": [
+    {
+      "id": 1,
+      "title": "Học React Hooks",
+      "description": "Làm ví dụ với useState, useEffect",
+      "completed": false,
+      "priority": "high",
+      "createdAt": "2025-08-21T10:00:00Z",
+      "dueDate": "2025-08-25T23:59:59Z",
+      "tags": ["react", "study"],
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "title": "Đi tập gym",
+      "description": "Tập ngực và tay",
+      "completed": true,
+      "priority": "medium",
+      "createdAt": "2025-08-20T08:30:00Z",
+      "dueDate": "2025-08-21T18:00:00Z",
+      "tags": ["health", "fitness"],
+      "userId": 1
+    },
+    {
+      "id": 3,
+      "title": "Mua đồ ăn",
+      "description": "Mua thịt gà, rau xanh, sữa",
+      "completed": false,
+      "priority": "low",
+      "createdAt": "2025-08-21T09:15:00Z",
+      "dueDate": "2025-08-22T12:00:00Z",
+      "tags": ["shopping", "daily"],
+      "userId": 2
+    }
+  ]
+}

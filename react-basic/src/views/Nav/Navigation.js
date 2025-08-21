@@ -27,12 +27,12 @@ const Navigation = () => {
                     Add
                 </NavLink>
 
-                {/* <NavLink
-                    to="#about"
+                <NavLink
+                    to="/users"
                     className={({ isActive }) => (isActive ? "active" : "")}
                 >
-                    About
-                </NavLink> */}
+                    Users
+                </NavLink>
             </div>
         </>
     )
