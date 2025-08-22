@@ -12,9 +12,10 @@ import ListUsers from './Users/ListUsers';
 import DetailUsers from './Users/DetailUser';
 import Layout from './Layout';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
 import todoReducer from '../redux/reducers';
+import Login from '../Login';
 /**
  * 2 loại component trong React:
  * 1. Class component: sử dụng class để định nghĩa, có thể sử dụng state
@@ -25,6 +26,15 @@ import todoReducer from '../redux/reducers';
 
 
 function App() {
+  const [isLogin, setIsLogin] = useState(false);
+
+  useEffect(() => {
+    let user = JSON.parse(localStorage.getItem("users"));
+    if (user) {
+      setIsLogin(true);
+    }
+    console.log("Reload");
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
@@ -39,26 +49,32 @@ function App() {
 
             {/* Redirect từ / sang /home */}
             <Route path="/" exact element={<Navigate to="/home" replace />} />
+            
+            {/* Layout chứa Navigation + Outlet */}
 
-          {/* Layout chứa Navigation + Outlet */}
-
-          <Route path='/' element={<Layout />}>
-            <Route path="home" element={<Home />} />
-            <Route path="add" element={<MyComponents />} />
-            <Route path="users" element={<ListUsers />} />
-            <Route path="users/:id" element={<DetailUsers />} />
-            {/* Đây là route "/todos" chứa nhiều component */}
-            <Route
-              path="/todos"
-              element={
+            <Route path='/' element={<Layout />}>
+              <Route path='login' element={<Login isLogin={isLogin} setIsLogin={setIsLogin} />} />
+              <Route path="home" element={<Home />} />
+              <Route path="add" element={<MyComponents />} />
+              <Route path="users" element={
                 <>
-                  {/* <MyComponents /> */}
-                  <ListTodo />
+                  <ListUsers />
                   <ToastContainer />
                 </>
               } />
-          </Route>
-
+              <Route path="users/:id" element={<DetailUsers />} />
+              {/* Đây là route "/todos" chứa nhiều component */}
+              <Route
+                path="/todos"
+                element={
+                  <>
+                    {/* <MyComponents /> */}
+                    <ListTodo />
+                    <ToastContainer />
+                  </>
+                } />
+              
+            </Route>
           </Routes>
         </Router>
       </header>

@@ -33,6 +33,13 @@ const Navigation = () => {
                 >
                     Users
                 </NavLink>
+
+                <NavLink
+                    to="/login"
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                    Login
+                </NavLink>
             </div>
         </>
     )

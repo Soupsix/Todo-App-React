@@ -12,7 +12,7 @@ const DetailUsers = () => {
         const fetchUser = async () => {
 
             try {
-                const res = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`);
+                const res = await axios.get(`http://localhost:8888/users/${id}`);
                 setUsers(res.data);
                 console.log('>>>Response data: ', res.data);
             } catch (error) {
@@ -33,8 +33,6 @@ const DetailUsers = () => {
                 <p><strong>ID:</strong> {users.id}</p>
                 <p><strong>Name:</strong> {users.name}</p>
                 <p><strong>Email:</strong> {users.email}</p>
-                <p><strong>Phone:</strong> {users.phone}</p>
-                <p><strong>Website:</strong> {users.website}</p>
             </div>
         </>
     )
